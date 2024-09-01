@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- displays site properly based on user's device -->
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+
     <link
       rel="icon"
       type="image/png"
@@ -26,45 +33,74 @@
     </style>
   </head>
   <body>
-    <h1>Desserts</h1>
+    <div class="content">
+      <div class="desserts">
+        <h1>Desserts</h1>
+        <list class="desserts-list">
+          <ul>
+            <div class="dessert-card-image-container">
+              <img src="assets/images/image-waffle-desktop.jpg" alt="" />
+              <button>Add to Cart</button>
+              <div class="dessert-card-description">
+                <p class="dessert-type">Waffle</p>
+                <p class="dessert-name">Waffle with Berries</p>
+                <p class="dessert-price">6.50</p>
+              </div>
+            </div>
+          </ul>
 
-    <list class="desserts-list">
-      <ul>
-        <div class="dessert-card-image-container">
-          <img src="assets/images/image-waffle-desktop.jpg" alt="" />
-          <div class="add-to-cart-container">Add to Cart</div>
-          <div class="dessert-card-description">
-            <p class="dessert-type">Waffle</p>
-            <p class="dessert-name">Waffle with Berries</p>
-            <p class="dessert-price">6.50</p>
-          </div>
+          <ul>
+            <div class="dessert-card-image-container">
+              <img src="assets/images/image-waffle-desktop.jpg" alt="" />
+              <button>Add to Cart</button>
+              <div class="dessert-card-description">
+                <p class="dessert-type">Waffle</p>
+                <p class="dessert-name">Waffle with Berries</p>
+                <p class="dessert-price">6.50</p>
+              </div>
+            </div>
+          </ul>
+
+          <ul>
+            <div class="dessert-card-image-container">
+              <img src="assets/images/image-waffle-desktop.jpg" alt="" />
+              <button>Add to Cart</button>
+              <div class="dessert-card-description">
+                <p class="dessert-type">Waffle</p>
+                <p class="dessert-name">Waffle with Berries</p>
+                <p class="dessert-price">6.50</p>
+              </div>
+            </div>
+          </ul>
+        </list>
+      </div>
+
+      <div class="cart-container">
+        <h2>Your Cart ()</h2>
+        <list class="cart-items"></list>
+        <p>Order total</p>
+        <div class="cart-carbon-neutral">
+          <img src="assets\images\icon-carbon-neutral.svg" alt="" />
+          <p>This is a <strong>carbon-neutral</strong> delivery</p>
         </div>
-      </ul>
 
-      <ul>
-        <div class="dessert-card-image-container">
-          <img src="assets/images/image-waffle-desktop.jpg" alt="" />
-          <div class="add-to-cart-container">Add to Cart</div>
-          <div class="dessert-card-description">
-            <p class="dessert-type">Waffle</p>
-            <p class="dessert-name">Waffle with Berries</p>
-            <p class="dessert-price">6.50</p>
-          </div>
-        </div>
-      </ul>
-    </list>
+        <button>Confirm order</button>
+      </div>
 
-    Vanilla Bean Crème Brûlée Crème Brûlée 7.00 Add to Cart Macaron Mix of Five
-    Macaron 8.00 Add to Cart Classic Tiramisu Tiramisu 5.50 Add to Cart
-    Pistachio Baklava Baklava 4.00 Add to Cart Lemon Meringue Pie Pie 5.00 Add
-    to Cart Red Velvet Cake Cake 4.50 Add to Cart Salted Caramel Brownie Brownie
-    4.50 Add to Cart Vanilla Panna Cotta Panna Cotta 6.50 Add to Cart Your Cart
-    (<!-- Quantity -->) Your added items will appear here
+      <!-- <div>
+        Vanilla Bean Crème Brûlée Crème Brûlée 7.00 Add to Cart Macaron Mix of
+        Five Macaron 8.00 Add to Cart Classic Tiramisu Tiramisu 5.50 Add to Cart
+        Pistachio Baklava Baklava 4.00 Add to Cart Lemon Meringue Pie Pie 5.00
+        Add to Cart Red Velvet Cake Cake 4.50 Add to Cart Salted Caramel Brownie
+        Brownie 4.50 Add to Cart Vanilla Panna Cotta Panna Cotta 6.50 Add to
+        Cart  Your added items will appear here
+      </div> -->
+    </div>
 
-    <div class="attribution">
+    <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
       Coded by <a href="#">Your Name Here</a>.
-    </div>
+    </footer>
   </body>
 </html>
