@@ -21,58 +21,34 @@
     <link rel="stylesheet" href="index.css" />
     <title>Frontend Mentor | Product list with cart</title>
 
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
+    <script src="app.js" defer></script>
   </head>
   <body>
     <div class="content">
       <div class="desserts">
         <h1>Desserts</h1>
-        <list class="desserts-list">
-          <ul>
-            <div class="dessert-card-image-container">
-              <img src="assets/images/image-waffle-desktop.jpg" alt="" />
-              <button>Add to Cart</button>
+        <ul class="desserts-list">
+          <li>
+            <div class="dessert-card-container">
+              <div class="dessert-image-container">
+                <img src="assets/images/image-waffle-desktop.jpg" alt="" />
+                <div class="cart-control">
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                  <div class="quantity-control" style="display: none">
+                    <button class="quantity-btn minus">-</button>
+                    <span class="quantity">1</span>
+                    <button class="quantity-btn plus">+</button>
+                  </div>
+                </div>
+              </div>
               <div class="dessert-card-description">
                 <p class="dessert-type">Waffle</p>
                 <p class="dessert-name">Waffle with Berries</p>
                 <p class="dessert-price">6.50</p>
               </div>
             </div>
-          </ul>
-
-          <ul>
-            <div class="dessert-card-image-container">
-              <img src="assets/images/image-waffle-desktop.jpg" alt="" />
-              <button>Add to Cart</button>
-              <div class="dessert-card-description">
-                <p class="dessert-type">Waffle</p>
-                <p class="dessert-name">Waffle with Berries</p>
-                <p class="dessert-price">6.50</p>
-              </div>
-            </div>
-          </ul>
-
-          <ul>
-            <div class="dessert-card-image-container">
-              <img src="assets/images/image-waffle-desktop.jpg" alt="" />
-              <button>Add to Cart</button>
-              <div class="dessert-card-description">
-                <p class="dessert-type">Waffle</p>
-                <p class="dessert-name">Waffle with Berries</p>
-                <p class="dessert-price">6.50</p>
-              </div>
-            </div>
-          </ul>
-        </list>
+          </li>
+        </ul>
       </div>
 
       <div class="cart-container">
