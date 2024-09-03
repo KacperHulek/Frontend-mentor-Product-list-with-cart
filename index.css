@@ -106,12 +106,12 @@ li {
   position: absolute;
   margin: 0;
   left: 50%;
-  width: 70%;
-  height: 2.5em;
-  border-radius: 1.25em;
+  width: 65%;
+  height: 2.8em;
+  border-radius: 100em;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  border: solid 1px black;
+  overflow: hidden;
 }
 
 .add-to-cart-btn {
@@ -132,29 +132,53 @@ li {
 }
 
 .quantity-control {
-  display: flex;
+  position: relative;
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  background-color: hsl(14, 86%, 42%);
+  overflow: hidden;
+  color: hsl(20, 50%, 98%);
+}
+
+.quantity-control span {
+  user-select: none;
 }
 
 .quantity-btn {
+  font-size: 1rem;
+  font-weight: 100;
   display: flex;
   align-content: center;
   justify-content: center;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 1.2em;
+  height: 1.2em;
   padding: 0px;
-  margin: 10px;
-  font-size: 25px;
+  margin: 15px;
+  cursor: pointer;
+  color: inherit;
+  border: solid 1px hsl(20, 50%, 98%);
+  background-color: inherit;
 }
 
-.quantity-btn span {
+.quantity-btn:active {
+  background-color: hsl(20, 50%, 98%);
+  color: hsl(14, 86%, 42%);
+}
+
+.plus span {
   align-self: center;
-  font-size: 31px;
+  font-size: 1.4rem;
+  width: 100%;
 }
 
+.minus span {
+  position: relative;
+  align-self: center;
+  font-size: 1.75rem;
+  transform: translateY(-4%);
+}
 .quantity {
   padding: 5px;
   align-self: center;

@@ -44,11 +44,12 @@ fetch("data.json")
         const minusBtn = control.querySelector(".minus");
         const plusBtn = control.querySelector(".plus");
 
-        let quantity = 1;
+        let quantity = 0;
 
         addToCartBtn.addEventListener("click", () => {
           addToCartBtn.style.display = "none";
           quantityControl.style.display = "flex";
+          quantity = 1;
         });
 
         minusBtn.addEventListener("click", () => {
