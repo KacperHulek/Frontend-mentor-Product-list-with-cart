@@ -15,16 +15,22 @@ fetch("data.json")
       cartItemsList.innerHTML = "";
       let total = 0;
       cartItems.forEach((item) => {
-        const cartItemElement = document.createElement("div");
+        const cartItemElement = document.createElement("li");
         cartItemElement.classList.add("cart-item");
         cartItemElement.innerHTML = `
-          <p>${item.name} x${item.quantity}</p>
-          <p>$${(item.price * item.quantity).toFixed(2)}</p>
+          <p class="cart-item-name">${item.name}</p>
+          <div class="cart-item-details">
+            <p class="cart-item-quantity">${item.quantity}x</p>
+            <p class="cart-item-price">@ $${item.price.toFixed(2)}</p>
+            <p class="cart-item-total-price">$${(
+              item.price * item.quantity
+            ).toFixed(2)}</p>
+          </div>
         `;
         cartItemsList.appendChild(cartItemElement);
         total += item.price * item.quantity;
       });
-      cartTotalElement.innerHTML = `<p>Order total</p><p>$${total.toFixed(
+      cartTotalElement.innerHTML = `<p class="order-total-text">Order Total</p><p class="order-total-amount">$${total.toFixed(
         2
       )}</p>`;
 
@@ -46,7 +52,7 @@ fetch("data.json")
               <div class="dessert-image-container">
                 <img src="${dessert.image.desktop}" alt="${dessert.name}" />
                 <div class="cart-control">
-                    <button class="add-to-cart-btn">Add to Cart</button>
+                    <button class="add-to-cart-btn"><img src="assets/images/icon-add-to-cart.svg" alt=""/><p>Add to Cart</p></button>
                     <div class="quantity-control" style="display: none;">
                         <button class="quantity-btn minus"><span>-</span></button>
                         <span class="quantity">1</span>
@@ -92,7 +98,7 @@ fetch("data.json")
         } else {
           quantity = 0;
           quantityControl.style.display = "none";
-          addToCartBtn.style.display = "block";
+          addToCartBtn.style.display = "flex";
           cartItems = cartItems.filter((item) => item.name !== dessert.name);
         }
         updateCartDisplay();
