@@ -60,7 +60,9 @@
             <img src="assets\images\icon-carbon-neutral.svg" alt="" />
             <p>This is a <strong>carbon-neutral</strong> delivery</p>
           </div>
-          <button class="confirm-order-btn">Confirm order</button>
+          <button class="red-btn" id="confirmOrderBtn">
+            Confirm order
+          </button>
         </div>
         <div class="cart-empty">
           <img src="assets\images\illustration-empty-cart.svg" alt="" />
@@ -69,10 +71,20 @@
       </div>
     </div>
 
+    <div id="confirmModal" class="modal">
+      <div class="modal-content">
+        <img src="assets\images\icon-order-confirmed.svg" alt="" />
+        <h1>Order Confirmed</h1>
+        <p>We hope you enjoy your food</p>
+        <ul id="finalDessertList"></ul>
+        <button id="newOrderBtn" class="red-btn">Start New Order</button>
+      </div>
+    </div>
+
     <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-      Coded by <a href="#">Your Name Here</a>.
+      Coded by <a href="https://github.com/KacperHulek">Kacper Hulek</a>.
     </footer>
   </body>
 </html>

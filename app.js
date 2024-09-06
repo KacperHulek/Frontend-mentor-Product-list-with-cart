@@ -160,5 +160,53 @@ fetch("data.json")
         updateCartDisplay();
       });
     });
+
+    const confirmOrderBtn = document.getElementById("confirmOrderBtn");
+    const modal = document.getElementById("confirmModal");
+    const newOrderBtn = document.getElementById("newOrderBtn");
+
+    function openModal() {
+      modal.style.display = "block";
+    }
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    confirmOrderBtn.addEventListener("click", () => {
+      openModal();
+
+      let total = 0;
+      const finalDessertList = document.getElementById("finalDessertList");
+      cartItems.forEach((item) => {
+        const cartItemElement = document.createElement("li");
+        cartItemElement.classList.add("cart-item");
+        cartItemElement.innerHTML = `
+        <p class="cart-item-name">${item.name}</p>
+        <div class="cart-item-details">
+          <p class="cart-item-quantity">${item.quantity}x</p>
+          <p class="cart-item-price">@ $${item.price.toFixed(2)}</p>
+          <p class="cart-item-total-price">$${(
+            item.price * item.quantity
+          ).toFixed(2)}</p>
+        </div>
+      `;
+        finalDessertList.appendChild(cartItemElement);
+        total += item.price * item.quantity;
+      });
+
+      const orderTotalLi = document.createElement("li");
+      orderTotalLi.innerHTML = `<p class="order-total-text">Order Total</p><p class="order-total-amount">$${total.toFixed(
+        2
+      )}</p>`;
+
+      finalDessertList.append(orderTotalLi);
+
+      newOrderBtn.addEventListener("click", () => {
+        cartItems = [];
+        updateCartDisplay();
+        updateDessertList();
+        closeModal();
+      });
+    });
   })
   .catch((error) => console.error("Error fetching desserts:", error));
