@@ -411,3 +411,7 @@ body {
   border-radius: 5px;
   text-align: center;
 }
+
+.cart-item .order-confirmation{
+  background-color: black;
+}

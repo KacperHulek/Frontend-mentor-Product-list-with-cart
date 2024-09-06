@@ -180,11 +180,18 @@ fetch("data.json")
       cartItems.forEach((item) => {
         const cartItemElement = document.createElement("li");
         cartItemElement.classList.add("cart-item");
+        cartItemElement.classList.add("order-confirmation");
         cartItemElement.innerHTML = `
-        <p class="cart-item-name">${item.name}</p>
-        <div class="cart-item-details">
-          <p class="cart-item-quantity">${item.quantity}x</p>
-          <p class="cart-item-price">@ $${item.price.toFixed(2)}</p>
+        <div class=img-thumbnail>
+          <img src="${item.image.thumbnail}" alt="${item.name}"/>
+        </div>
+        <div>
+          <p class="cart-item-name">${item.name}</p>
+          <p class="cart-item-price"><span class="cart-item-quantity">${
+            item.quantity
+          }x</span>  @ $${item.price.toFixed(2)}</p>
+        </div>
+        <div>
           <p class="cart-item-total-price">$${(
             item.price * item.quantity
           ).toFixed(2)}</p>
@@ -194,14 +201,16 @@ fetch("data.json")
         total += item.price * item.quantity;
       });
 
-      const orderTotalLi = document.createElement("li");
-      orderTotalLi.innerHTML = `<p class="order-total-text">Order Total</p><p class="order-total-amount">$${total.toFixed(
+      const orderTotal = document.createElement("div");
+      orderTotal.innerHTML = `<p class="order-total-text">Order Total</p><p class="order-total-amount">$${total.toFixed(
         2
       )}</p>`;
 
-      finalDessertList.append(orderTotalLi);
+      finalDessertList.parentElement.append(orderTotal);
 
       newOrderBtn.addEventListener("click", () => {
+        finalDessertList.innerHTML = "";
+        orderTotal.innerHTML = "";
         cartItems = [];
         updateCartDisplay();
         updateDessertList();
