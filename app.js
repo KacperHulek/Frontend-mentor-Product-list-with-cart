@@ -5,6 +5,8 @@ fetch("data.json")
     const cartItemsList = document.querySelector(".cart-items");
     const cartTotalElement = document.querySelector(".cart-order-total");
     const cartCountElement = document.querySelector("h2");
+    const cartDynamicContent = document.querySelector(".cart-dynamic-content");
+    const cartEmptyState = document.querySelector(".cart-empty");
     let cartItems = [];
 
     // Clear existing content
@@ -14,10 +16,17 @@ fetch("data.json")
     function updateCartDisplay() {
       cartItemsList.innerHTML = "";
       let total = 0;
-      cartItems.forEach((item) => {
-        const cartItemElement = document.createElement("li");
-        cartItemElement.classList.add("cart-item");
-        cartItemElement.innerHTML = `
+      if (!cartItems.length) {
+        cartDynamicContent.style.display = "none";
+        cartEmptyState.style.display = "flex";
+        cartCountElement.textContent = `Your Cart (0)`;
+      } else {
+        cartEmptyState.style.display = "none";
+        cartDynamicContent.style.display = "block";
+        cartItems.forEach((item) => {
+          const cartItemElement = document.createElement("li");
+          cartItemElement.classList.add("cart-item");
+          cartItemElement.innerHTML = `
           <p class="cart-item-name">${item.name}</p>
           <div class="cart-item-details">
             <p class="cart-item-quantity">${item.quantity}x</p>
@@ -25,21 +34,58 @@ fetch("data.json")
             <p class="cart-item-total-price">$${(
               item.price * item.quantity
             ).toFixed(2)}</p>
+            <button class="cart-cancel-item"><span>x</span></button>
           </div>
         `;
-        cartItemsList.appendChild(cartItemElement);
-        total += item.price * item.quantity;
-      });
-      cartTotalElement.innerHTML = `<p class="order-total-text">Order Total</p><p class="order-total-amount">$${total.toFixed(
-        2
-      )}</p>`;
+          cartItemsList.appendChild(cartItemElement);
+          total += item.price * item.quantity;
+        });
 
-      let cartTotalCount = 0;
-      for (const element of cartItems) {
-        cartTotalCount += element.quantity;
+        document.querySelectorAll(".cart-cancel-item").forEach((button) => {
+          button.addEventListener("click", (e) => {
+            const index = parseInt(
+              e.target.closest(".cart-cancel-item").dataset.index
+            );
+            cartItems.splice(index, 1);
+            updateCartDisplay();
+            updateDessertList();
+          });
+        });
+
+        cartTotalElement.innerHTML = `<p class="order-total-text">Order Total</p><p class="order-total-amount">$${total.toFixed(
+          2
+        )}</p>`;
+
+        let cartTotalCount = 0;
+        for (const element of cartItems) {
+          cartTotalCount += element.quantity;
+        }
+
+        cartCountElement.textContent = `Your Cart (${cartTotalCount})`;
       }
+    }
 
-      cartCountElement.textContent = `Your Cart (${cartTotalCount})`;
+    function updateDessertList() {
+      dessertsList
+        .querySelectorAll(".dessert-card-container")
+        .forEach((card, index) => {
+          const control = card.querySelector(".cart-control");
+          const addToCartBtn = control.querySelector(".add-to-cart-btn");
+          const quantityControl = control.querySelector(".quantity-control");
+          const quantitySpan = control.querySelector(".quantity");
+
+          const cartItem = cartItems.find(
+            (item) => item.name === data[index].name
+          );
+          if (cartItem) {
+            addToCartBtn.style.display = "none";
+            quantityControl.style.display = "flex";
+            quantitySpan.textContent = cartItem.quantity;
+          } else {
+            addToCartBtn.style.display = "flex";
+            quantityControl.style.display = "none";
+          }
+        });
     }
 
     // Loop through each dessert item
