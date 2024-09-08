@@ -64,7 +64,6 @@ fetch("data.json")
         cartCountElement.textContent = `Your Cart (${cartTotalCount})`;
       }
     }
-
     function updateDessertList() {
       dessertsList
         .querySelectorAll(".dessert-card-container")
@@ -73,7 +72,6 @@ fetch("data.json")
           const addToCartBtn = control.querySelector(".add-to-cart-btn");
           const quantityControl = control.querySelector(".quantity-control");
           const quantitySpan = control.querySelector(".quantity");
-
           const cartItem = cartItems.find(
             (item) => item.name === data[index].name
           );
@@ -84,6 +82,8 @@ fetch("data.json")
           } else {
             addToCartBtn.style.display = "flex";
             quantityControl.style.display = "none";
+            quantitySpan.textContent = 1;
+            control.parentElement.style.borderColor = "hsl(20, 50%, 98%)";
           }
         });
     }
@@ -96,7 +96,9 @@ fetch("data.json")
       listItem.innerHTML = `
         <div class="dessert-card-container">
               <div class="dessert-image-container">
-                <img src="${dessert.image.desktop}" alt="${dessert.name}" />
+                <img  src="${dessert.image.desktop}" alt="${
+        dessert.name
+      }" class = "dessert-image"/>
                 <div class="cart-control">
                     <button class="add-to-cart-btn"><img src="assets/images/icon-add-to-cart.svg" alt=""/><p>Add to Cart</p></button>
                     <div class="quantity-control" style="display: none;">
@@ -131,6 +133,7 @@ fetch("data.json")
         quantity = 1;
         cartItems.push({ ...dessert, quantity: 1 });
         updateCartDisplay();
+        control.parentElement.style.borderColor = "hsl(14, 86%, 42%)";
       });
 
       minusBtn.addEventListener("click", () => {
@@ -146,6 +149,7 @@ fetch("data.json")
           quantityControl.style.display = "none";
           addToCartBtn.style.display = "flex";
           cartItems = cartItems.filter((item) => item.name !== dessert.name);
+          control.parentElement.style.borderColor = "hsl(20, 50%, 98%)";
         }
         updateCartDisplay();
       });
@@ -166,7 +170,7 @@ fetch("data.json")
     const newOrderBtn = document.getElementById("newOrderBtn");
 
     function openModal() {
-      modal.style.display = "block";
+      modal.style.display = "flex";
     }
     function closeModal() {
       modal.style.display = "none";
@@ -176,40 +180,41 @@ fetch("data.json")
       openModal();
 
       let total = 0;
-      const finalDessertList = document.getElementById("finalDessertList");
+      const finalDessertsList = document.getElementById("finalDessertsList");
       cartItems.forEach((item) => {
         const cartItemElement = document.createElement("li");
-        cartItemElement.classList.add("cart-item");
-        cartItemElement.classList.add("order-confirmation");
+        cartItemElement.classList.add("order-item");
         cartItemElement.innerHTML = `
-        <div class=img-thumbnail>
+        <div class="order-item-details">
           <img src="${item.image.thumbnail}" alt="${item.name}"/>
+          <div>
+            <p class="cart-item-name">${item.name}</p>
+            <p class="cart-item-price"><span class="cart-item-quantity">${
+              item.quantity
+            }x</span>  @ $${item.price.toFixed(2)}</p>
+          </div>
+          <div class="cart-item-total-price-container">
+            <p class="cart-item-total-price">$${(
+              item.price * item.quantity
+            ).toFixed(2)}</p>
+          </div>
         </div>
-        <div>
-          <p class="cart-item-name">${item.name}</p>
-          <p class="cart-item-price"><span class="cart-item-quantity">${
-            item.quantity
-          }x</span>  @ $${item.price.toFixed(2)}</p>
-        </div>
-        <div>
-          <p class="cart-item-total-price">$${(
-            item.price * item.quantity
-          ).toFixed(2)}</p>
-        </div>
+
       `;
-        finalDessertList.appendChild(cartItemElement);
+        finalDessertsList.appendChild(cartItemElement);
         total += item.price * item.quantity;
       });
 
       const orderTotal = document.createElement("div");
+      orderTotal.classList.add("order-total-section");
       orderTotal.innerHTML = `<p class="order-total-text">Order Total</p><p class="order-total-amount">$${total.toFixed(
         2
       )}</p>`;
 
-      finalDessertList.parentElement.append(orderTotal);
+      finalDessertsList.parentElement.append(orderTotal);
 
       newOrderBtn.addEventListener("click", () => {
-        finalDessertList.innerHTML = "";
+        finalDessertsList.innerHTML = "";
         orderTotal.innerHTML = "";
         cartItems = [];
         updateCartDisplay();

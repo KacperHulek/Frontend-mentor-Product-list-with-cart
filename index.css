@@ -72,11 +72,6 @@ body {
   }
 }
 
-.desserts {
-  /* height: 100%; */
-  /* width: 100%; */
-}
-
 .dessert-type {
   color: hsl(12, 20%, 44%);
   font-weight: 400;
@@ -105,15 +100,16 @@ body {
   margin-bottom: 20px;
 }
 
-.dessert-card-container img {
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
-}
-
 .dessert-image-container {
   position: relative;
   margin-bottom: 30px;
+  border-radius: 18px;
+  border: solid 4px hsl(20, 50%, 98%); 
+  /* hsl(14, 86%, 42%) */
+}
+
+.dessert-image {
+  border-radius: 15px;
 }
 
 .cart-control {
@@ -391,6 +387,8 @@ body {
 
 .modal {
   display: none;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -402,16 +400,94 @@ body {
 }
 
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
   background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
+  padding: 35px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 500px;
-  border-radius: 5px;
+  height: auto;
+  max-width: 550px;
+  border-radius: 13px;
   text-align: center;
+  background-color: hsl(20, 50%, 98%);
 }
 
-.cart-item .order-confirmation{
-  background-color: black;
+.modal-content > img {
+  width: fit-content;
+}
+
+.modal-content > p {
+  color: hsl(12, 20%, 44%);
+  margin-bottom: 35px;
+}
+
+#finalOrderSection {
+  width: 100%;
+  background-color: hsl(13, 31%, 94%);
+  border-radius: 10px;
+  padding: 25px;
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.order-item {
+  display: block;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.order-item::after {
+  display: inline-block;
+  content: "";
+  border-top: 1px solid hsl(14, 25%, 72%);
+  width: 100%;
+  border-radius: 2px;
+  /* transform: translateY(2.6rem); */
+}
+
+.order-item img {
+  display: block;
+  height: 3.2em;
+  width: 3.2em;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.order-item-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.order-item-details div {
+  margin-left: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.order-item .cart-item-name {
+  margin-bottom: 5px;
+}
+
+.order-item .cart-item-total-price {
+  color: hsl(14, 65%, 9%);
+}
+
+div .cart-item-total-price-container {
+  margin-left: auto;
+}
+
+.order-total-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: hsl(14, 65%, 9%);
 }
