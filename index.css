@@ -35,6 +35,15 @@ h6 {
   overflow-wrap: break-word;
 }
 
+:root {
+  --color-primary: hsl(14, 86%, 42%);
+  --color-secondary: hsl(12, 20%, 44%);
+  --color-background: hsl(20, 50%, 98%);
+  --color-text: hsl(14, 65%, 9%);
+  --border-radius: 15px;
+  --transition-speed: 0.3s;
+}
+
 #root,
 #__next {
   isolation: isolate;
@@ -52,7 +61,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  background-color: hsl(20, 50%, 98%);
+  background-color: var(--color-background);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -73,18 +82,18 @@ body {
 }
 
 .dessert-type {
-  color: hsl(12, 20%, 44%);
+  color: var(--color-secondary);
   font-weight: 400;
 }
 
 .dessert-name {
-  color: hsl(14, 65%, 9%);
+  color: var(--color-text);
   font-weight: 600;
 }
 
 .dessert-price {
   font-weight: 600;
-  color: hsl(14, 86%, 42%);
+  color: var(--color-primary);
 }
 
 .desserts-list {
@@ -104,8 +113,7 @@ body {
   position: relative;
   margin-bottom: 30px;
   border-radius: 18px;
-  border: solid 4px hsl(20, 50%, 98%); 
-  /* hsl(14, 86%, 42%) */
+  border: solid 4px var(--color-background);
 }
 
 .dessert-image {
@@ -133,7 +141,7 @@ body {
   overflow: hidden;
   cursor: pointer;
   border-radius: inherit;
-  border: solid 1px hsl(14, 86%, 42%);
+  border: solid 1px var(--color-primary);
   background-color: white;
   font-weight: 600;
   align-items: center;
@@ -150,9 +158,9 @@ body {
 }
 
 .add-to-cart-btn:active {
-  color: hsl(14, 86%, 42%);
+  color: var(--color-primary);
   border: solid 2px;
-  background-color: hsl(20, 50%, 98%);
+  background-color: var(--color-background);
 }
 
 .quantity-control {
@@ -160,9 +168,9 @@ body {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  background-color: hsl(14, 86%, 42%);
+  background-color: var(--color-primary);
   overflow: hidden;
-  color: hsl(20, 50%, 98%);
+  color: var(--color-background);
 }
 
 .quantity-control span {
@@ -182,13 +190,13 @@ body {
   margin: 15px;
   cursor: pointer;
   color: inherit;
-  border: solid 1px hsl(20, 50%, 98%);
+  border: solid 1px var(--color-background);
   background-color: inherit;
 }
 
 .quantity-btn:active {
   background-color: white;
-  color: hsl(14, 86%, 42%);
+  color: var(--color-primary);
 }
 
 .plus span {
@@ -216,7 +224,7 @@ body {
   height: fit-content;
 }
 .cart-container h2 {
-  color: hsl(14, 86%, 42%);
+  color: var(--color-primary);
   margin-bottom: 20px;
 }
 
@@ -230,25 +238,25 @@ body {
 
 .cart-item-name {
   font-size: 1.05rem;
-  color: hsl(14, 65%, 9%);
+  color: var(--color-text);
   font-weight: 500;
   margin-bottom: 10px;
 }
 
 .cart-item-quantity {
   margin-right: 15px;
-  color: hsl(14, 86%, 42%);
+  color: var(--color-primary);
   font-weight: 500;
 }
 
 .cart-item-price {
   margin-right: 8px;
-  color: hsl(12, 20%, 44%);
+  color: var(--color-secondary);
 }
 
 .cart-item-total-price {
   font-weight: 600;
-  color: hsl(12, 20%, 44%);
+  color: var(--color-secondary);
 }
 
 .cart-order-total {
@@ -261,7 +269,7 @@ body {
 .cart-order-total p {
   display: block;
   width: fit-content;
-  color: hsl(14, 65%, 9%);
+  color: var(--color-text);
 }
 
 .order-total-text {
@@ -319,8 +327,8 @@ body {
   width: 100%;
   height: 2.9rem;
   cursor: pointer;
-  background-color: hsl(14, 86%, 42%);
-  color: hsl(20, 50%, 98%);
+  background-color: var(--color-primary);
+  color: var(--color-background);
   border-radius: 100px;
   border: none;
 }
@@ -342,14 +350,14 @@ body {
   height: 1.2em;
   padding: 0px;
   cursor: pointer;
-  color: hsl(12, 20%, 44%);
-  border: solid 2px hsl(12, 20%, 44%);
+  color: var(--color-secondary);
+  border: solid 2px var(--color-secondary);
   background-color: inherit;
 }
 
 .cart-cancel-item:active {
-  border-color: hsl(14, 65%, 9%);
-  color: hsl(14, 65%, 9%);
+  border-color: var(--color-text);
+  color: var(--color-text);
 }
 
 .cart-cancel-item span {
@@ -363,7 +371,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: hsl(12, 20%, 44%);
+  color: var(--color-secondary);
   font-weight: 600;
 }
 
@@ -411,7 +419,7 @@ body {
   max-width: 550px;
   border-radius: 13px;
   text-align: center;
-  background-color: hsl(20, 50%, 98%);
+  background-color: var(--color-background);
 }
 
 .modal-content > img {
@@ -419,7 +427,7 @@ body {
 }
 
 .modal-content > p {
-  color: hsl(12, 20%, 44%);
+  color: var(--color-secondary);
   margin-bottom: 35px;
 }
 
@@ -477,7 +485,7 @@ body {
 }
 
 .order-item .cart-item-total-price {
-  color: hsl(14, 65%, 9%);
+  color: var(--color-text);
 }
 
 div .cart-item-total-price-container {
@@ -489,5 +497,5 @@ div .cart-item-total-price-container {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: hsl(14, 65%, 9%);
+  color: var(--color-text);
 }
