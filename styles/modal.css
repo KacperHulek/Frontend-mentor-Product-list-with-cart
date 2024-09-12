@@ -20,11 +20,14 @@
   padding: 2em;
   border: 1px solid #888;
   width: 80%;
-  height: auto;
+  height: fit-content;
   max-width: 550px;
   border-radius: 13px;
-  text-align: center;
+  text-align: left;
   background-color: var(--color-background);
+
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .modal-content > img {
@@ -34,6 +37,10 @@
 .modal-content > p {
   color: var(--color-secondary);
   margin-bottom: 2em;
+}
+
+.modal-content > h {
+  text-align: left;
 }
 
 #finalOrderSection {
