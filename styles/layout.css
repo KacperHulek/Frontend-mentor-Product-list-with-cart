@@ -1,0 +1,53 @@
+@media (max-width: 1369px) {
+  .content {
+    flex-wrap: wrap;
+  }
+}
+
+body {
+  font-family: "Red Hat Text", sans-serif;
+  font-size: 16px;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  padding: 5em;
+  margin-bottom: auto;
+  justify-content: center;
+}
+
+.desserts {
+  display: block;
+  max-width: fit-content;
+}
+
+.desserts > h1 {
+  max-width: fit-content;
+}
+
+.desserts-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.desserts-list li {
+  max-width: 260px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.attribution {
+  font-size: 0.75rem;
+  text-align: center;
+}
