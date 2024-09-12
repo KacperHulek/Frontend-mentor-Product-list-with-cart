@@ -94,28 +94,34 @@ fetch("data.json")
       const listItem = document.createElement("li");
       // Create the dessert card HTML
       listItem.innerHTML = `
-        <div class="dessert-card-container">
-              <div class="dessert-image-container">
-                <img  src="${dessert.image.desktop}" alt="${
+      <div class="dessert-card-container">
+        <div class="dessert-image-container">
+          <picture class="dessert-picture">
+            <source media="(min-width: 1024px)" srcset="${
+              dessert.image.desktop
+            }">
+            <source media="(min-width: 650px)" srcset="${dessert.image.tablet}">
+            <source media="(min-width: 0px)" srcset="${dessert.image.mobile}">
+            <img src="${dessert.image.thumbnail}" alt="${
         dessert.name
-      }" class = "dessert-image"/>
-                <div class="cart-control">
-                    <button class="add-to-cart-btn"><img src="assets/images/icon-add-to-cart.svg" alt=""/><p>Add to Cart</p></button>
-                    <div class="quantity-control" style="display: none;">
-                        <button class="quantity-btn minus"><span>-</span></button>
-                        <span class="quantity">1</span>
-                        <button class="quantity-btn plus"><span>+</span></button>
-                    </div>
-                </div>
-               </div>
-         
-          <div class="dessert-card-description">
-            <p class="dessert-type">${dessert.category}</p>
-            <p class="dessert-name">${dessert.name}</p>
-            <p class="dessert-price">$${dessert.price.toFixed(2)}</p>
+      }" class="dessert-image">
+          </picture>
+          <div class="cart-control">
+            <button class="add-to-cart-btn"><img src="assets/images/icon-add-to-cart.svg" alt=""/><p>Add to Cart</p></button>
+            <div class="quantity-control" style="display: none;">
+              <button class="quantity-btn minus"><span>-</span></button>
+              <span class="quantity">1</span>
+              <button class="quantity-btn plus"><span>+</span></button>
+            </div>
           </div>
         </div>
-      `;
+        <div class="dessert-card-description">
+          <p class="dessert-type">${dessert.category}</p>
+          <p class="dessert-name">${dessert.name}</p>
+          <p class="dessert-price">$${dessert.price.toFixed(2)}</p>
+        </div>
+      </div>
+    `;
       // Append the new item to the list
       dessertsList.appendChild(listItem);
 
