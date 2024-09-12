@@ -52,7 +52,7 @@ body {
   }
 
   .cart-container {
-    min-width: 330px !important;
+    min-width: 330px;
   }
 }
 
@@ -69,11 +69,15 @@ body {
   .content {
     flex-wrap: wrap;
   }
+  .cart-container {
+    width: min(100%, 500px);
+    margin-top: 1.7em;
+  }
 }
 
 @media (max-width: 649px) {
   .desserts-list {
-    grid-template-columns: repeat(1, minmax(auto,400px));
+    grid-template-columns: repeat(1, minmax(auto, 400px));
   }
   .content {
     flex-wrap: wrap;
@@ -85,7 +89,7 @@ body {
   }
 
   .cart-container {
-    width: 100%;
+    width: min(100%, 500px);
     margin-top: 1.7em;
   }
 
@@ -94,7 +98,6 @@ body {
   }
   .modal {
     align-items: end !important;
-    /* height: auto !important; */
   }
 }
 
